@@ -32,13 +32,13 @@ function Footer()
 
 // Instanciation of inherited class
 $print = "SELECT*FROM t_penduduk;";
-$hasil = mysql_query($print);
+$hasil = mysqli_query($print);
 
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Times','',12);
-while ($baris=mysql_fetch_assoc($hasil)){
+while ($baris=mysqli_fetch_assoc($hasil)){
 	$pdf->Cell(0,10,'$baris['Tanggal_Lahir']'.$i,0,1);
 }
 $pdf->Output();

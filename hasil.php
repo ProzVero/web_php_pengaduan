@@ -15,14 +15,15 @@
     <link href="admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
-<body background="asset/img/sunset.jpg">
+<body style="background-image: url('asset/img/polri.jpg'); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
+
  <br>
-  <div class="col-md-12">
+  <div>
     <?php include"navbar.php"; ?>
   </div>
 
-  <div class="col-md-9">
-  <div class="col-md-3">
+  <div class="col-md-12">
+  <div class="col-md-2">
     <div class="well well-sm">
       <caption><p align="center"><b>Jumlah Kasus</b></p></caption>
       <div class="panel panel-info">
@@ -34,18 +35,6 @@
                 <?php
                   include "koneksi.php";
                   $query = mysqli_query($konek , "SELECT * FROM aduan");
-                  $jumlah = mysqli_num_rows($query);
-
-                  echo "$jumlah";
-                ?>
-              </td>
-            </tr>
-            <tr  class="info">
-              <td><span class="glyphicon glyphicon-phone"></span> Via Smarthphone</td>
-              <td>
-                <?php
-                  include "koneksi.php";
-                  $query = mysqli_query($konek, "SELECT * FROM aduan");
                   $jumlah = mysqli_num_rows($query);
 
                   echo "$jumlah";
@@ -88,8 +77,8 @@
 
   </div>
 
-  <div class="col-md-6">
-    <div class="well well-sm">
+  <div class="col-md-10">
+    <!--div class="well well-sm">
       <caption><p align="center"><b>Kategori</b></p></caption>
       <div class="panel panel-info">
         <div class="table-responsive">
@@ -173,26 +162,50 @@
               </td>
               <td class="danger">Total Kasus</td>
               <td class="danger">
-                <?php
-                  include "koneksi.php";
-                  $query = mysqli_query($konek, "SELECT * FROM aduan");
-                  $jumlah = mysqli_num_rows($query);
-
-                  echo "$jumlah";
-                ?>
+                
               </td>
             </tr>
           </table>
         </div>
       </div>
+    </div-->
+    <div class="card mb-4 well well-sm">
+      <div class="card-header">
+        <i class="fas fa-chart-bar me-1"></i>
+          Kategori
+        </div>
+        <div class="card-body"><canvas id="barKategory" width="100%" height="40"></canvas></div>
     </div>
   </div>
   </div> 
+
+  <?php
+    include "koneksi.php";
+    $query = mysqli_query($konek, "SELECT * FROM aduan");
+    $query2 = mysqli_query($konek, "SELECT * FROM aduan WHERE kategori='Kekerasan Fisik'");
+    $query3 = mysqli_query($konek, "SELECT * FROM aduan WHERE kategori='Pelecehan Seksual'");
+    $query4 = mysqli_query($konek, "SELECT * FROM aduan WHERE kategori='Pembunuhan'");
+    $query5 = mysqli_query($konek, "SELECT * FROM aduan WHERE kategori='Kekerasan Psikis'");
+    $query6 = mysqli_query($konek, "SELECT * FROM aduan WHERE kategori='Pencurian'");
+    $query7 = mysqli_query($konek, "SELECT * FROM aduan WHERE kategori='Kdrt'");
+    $query8 = mysqli_query($konek, "SELECT * FROM aduan WHERE kategori='Lainya'");
+
+    $total = mysqli_num_rows($query);
+    $kfisik = mysqli_num_rows($query2);
+    $psek = mysqli_num_rows($query3);
+    $pembunuh = mysqli_num_rows($query4);
+    $kpsikis = mysqli_num_rows($query5);
+    $curi = mysqli_num_rows($query6);
+    $kdrt = mysqli_num_rows($query7);
+    $lainnya = mysqli_num_rows($query8);
+
+  ?>
 
  
 
  
 <!-- jQuery -->
+
     <script src="js/bootstrap.min.js"></script>
     <script src="admin/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -206,6 +219,65 @@
                 responsive: true
         });
     });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="assets/demo/chart-pie-demo.js"></script>
+
+    
+        <script>
+      var ctx = document.getElementById("barKategory");
+      var myLineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["Kekerasan Fisik", "Pelecehan Seksual", "Pembunuhan", "Kekerasan Psikis", "Pencurian", "KDRT","Lainnya"],
+          datasets: [{
+            label: "Kasus",
+            backgroundColor: ['#07C217', '#0E3AD1', '#FDB45C', '#46BFBD', '#949FB1','#4D5360','#F7464A'],
+            borderColor: "rgba(2,117,216,1)",
+            data: [
+              <?php echo $kfisik ?>,
+              <?php echo $psek ?>,
+              <?php echo $pembunuh ?>,
+              <?php echo $kpsikis ?>,
+              <?php echo $curi ?>,              
+              <?php echo $kdrt ?>,
+              <?php echo $lainnya ?>
+            ],
+          }],
+        },
+        options: {
+          scales: {
+            xAxes: [{
+              time: {
+                unit: 'kasus'
+              },
+              gridLines: {
+                display: false
+              },
+              ticks: {
+                maxTicksLimit: 7
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                min: 0,
+                max: <?php echo $total ?>,
+                maxTicksLimit: 5
+              },
+              gridLines: {
+                display: true
+              }
+            }],
+          },
+          legend: {
+            display: false
+          }
+        }
+      });
     </script>
 </body>    
 </html>

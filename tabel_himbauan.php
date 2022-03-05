@@ -116,7 +116,10 @@
                                             <td><?php echo $d['ket']; ?></td>
                                             <td><?php echo $d['datetime']; ?></td>
                                             <td> 
-                                                <a Onclick="return confirm('Yakin Mau Hapus?...');"href="hapus_pelapor.php?np=<?php echo $d['np']; ?>">
+                                                <a href="edit_himbauan.php?no=<?php echo $d['no']; ?>">
+                                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                </a>
+                                                <a Onclick="return confirm('Yakin Mau Hapus?...');"href="hapus_himbauan.php?no=<?php echo $d['no']; ?>">
                                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                                 </a>
                                             </th>

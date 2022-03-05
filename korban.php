@@ -24,11 +24,10 @@
 
 </head>
 
-<body background="asset/img/sunset.jpg">
+<body style="background-image: url('asset/img/polri.jpg'); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
 
     <!-- Container -->
 
-    <div class="container">
 
     <?php
 
@@ -50,11 +49,13 @@
 
     ?>
 
-        <div class="col-md-12">
+        <div>
 
             <?php include "navbar.php"; ?>
 
         </div>
+        
+    <div class="container">
 
         <div class="col-md-3">
 
@@ -161,7 +162,7 @@
 
                         <td>Ciri - ciri Korban</td>
 
-                        <td><textarea class="ckeditor" name="ciri"></textarea></td>
+                        <td><textarea class="" rows="5" cols="70" name="ciri"></textarea></td>
 
                     </tr>
 

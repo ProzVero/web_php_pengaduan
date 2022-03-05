@@ -22,12 +22,13 @@
 
 </head>
 
-<body background="asset/img/sunset.jpg">
+<body style="background-image: url('asset/img/polri.jpg'); width: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
 
-<div class="container">
-<div class="container">
+<div>
 
   <?php include "navbar.php"; ?>   
+</div>
+<div class="container">
 
   <div class="panel panel-info col-md-12">
 
@@ -39,7 +40,7 @@
 
         $kode=$_GET['kode'];
 
-        // $query=mysql_query("SELECT * FROM aduan");
+        // $query=mysqli_query($konek, "SELECT * FROM aduan");
 
           $query=mysqli_query($konek, "SELECT pelapor.*, aduan.* FROM pelapor, aduan WHERE pelapor.np=aduan.np;");
 
@@ -49,23 +50,42 @@
 
       ?>
 
-          <div class="panel panel-warning col-md-4">
+          <div class="panel panel-warning col-md-12">
+            
+            <div class="col-md-12">
+              <p class="text-danger"><b>No : <?php echo $row['kode']; ?></b><br></p><hr>
 
-            <p class="text-danger"><b>No : <?php echo $row['kode']; ?></b><br></p><hr>
-<p  ><font color="red"><b>Kategori</b>     : <?php echo $row['kategori'];?></font></p>  
- <p  ><font color="purple"><b>Tanggal</b>      : <?php echo $row['datetime'];?></font></p>
-            <p><b>Nama Pelapor</b> : <?php echo $row['nama']; ?><br></p>
+              <div class="col-md-9">  
 
-            <p><b>Alamat</b> : <?php echo $row['alamat']; ?><br></p>
+                <p  ><font color="red"><b>Kategori</b>     : <?php echo $row['kategori'];?></font></p>  
+                <p  ><font color="purple"><b>Tanggal</b>      : <?php echo $row['datetime'];?></font></p>
+                <p><b>Nama Pelapor</b> : <?php echo $row['nama']; ?><br></p>
 
-            <p><b>No Hp</b> : <?php echo $row['nohp']; ?><br></p>
+                <p><b>Alamat</b> : <?php echo $row['alamat']; ?><br></p>
 
-            <p><b>Uraian</b> : <?php echo $row['isi']; ?><br></p>
+                <p><b>No Hp</b> : <?php echo $row['nohp']; ?><br></p>
+              </div>
+              <div class="col-md-3">  
+              
+                <img src="asset/img/aduan/<?php echo $row['gambar'] ?>" style="width: 75px; height: 75px">
+              </div>
 
-            <p><b>Tkp</b> : <?php echo $row['tkp']; ?></p><br>
+            </div> 
+            <div class="col-md-12">
+            
+              <div class="col-md-12">
+                <p><b>Uraian</b> : <?php echo $row['isi']; ?><br></p>
+
+                <p><b>Tkp</b> : <?php echo $row['tkp']; ?></p><br>
+              </div>
+
+            </div>
+
+
  
 
-          </div>                            
+          </div>  
+          <hr>                          
 
           <?php
 

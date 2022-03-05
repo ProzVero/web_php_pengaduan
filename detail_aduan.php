@@ -72,7 +72,7 @@
             <?php include "adminmenu.php"; ?>
         </nav>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper" class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="col-md-10">
@@ -105,7 +105,9 @@
                     <p><b>POLRI DAERAH SULAWESI SELATAN</b></p>
                     <p><b>RESORT PALOPO</b></p>
                     <p><b>SEKTOR WARA UTARA</b></p>
-                    <p><img src="asset/img/lambang_polri.png" alt="" width=100px;></p>
+                    <p></p>
+                    <!--img src="asset/img/lambang_polri.png" alt="" width=100px;-->
+                    <img src="asset/img/lambang-polri.png" alt="" width="100px">
                 </center>
                 <p><b>LAPORAN POLISI</b></p>
                 <p>Nomor : <?php echo $kode; ?></p><hr>
@@ -113,8 +115,8 @@
                     <p style="border-top: 1px solid #bbb;"></p>
                     <p><b>YANG MELAPORKAN</b></p>
                     <p style="border-top: 1px solid #bbb;"></p>
-                    <div class="table-responsive col-md-9">
-                        <table class="table tabel-condensed">
+                    <div class="col-md-9">
+                        <table class="table ">
                             <tr>
                                 <td><p>JENIS IDENTITAS</p></td> <td>:</td>
                             </tr>  
@@ -252,18 +254,47 @@
                         </table>
                     </div>
                 </div>
-                <div style="line-height:10px;">
+                <div class="container col-md-12" style="line-height:10px;">
                     <p style="border-top: 1px solid #bbb;"></p>
                     <center>
                         <p><b>URAIAN KEJADIAN</b></p>
                     </center>
                     <p style="border-top: 1px solid #bbb;"></p>
-                    <div class="table-responsive col-md-9">
+                    <div class="table-responsive col-md-12">
                         <table class="table tabel-condensed">
                             <tr>
                                 <td><p><b>KETERANGAN</b></p></td> <td>:</td><td><?php echo $aduan['isi']; ?></td>
                             </tr>   
                         </table>
+                    </div>
+                </div>
+                <div class="container col-md-12" style="line-height:px;">
+                    <p style="border-top: 1px solid #bbb;"></p>
+                    <center>
+                        <p><b>LAMPIRAN FOTO</b></p>
+                    </center>
+                    <p style="border-top: 1px solid #bbb;"></p>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <center>
+                                <p>Foto Aduan</p>
+                            
+                            <img src="asset/img/aduan/<?php echo $aduan['gambar'] ?>" style="width: 90%;">
+                            </center>
+                        </div>
+                        <div class="col-md-4">
+                            <center>
+                                <p>Foto Pelaku</p>
+                                <img src="asset/img/pelaku/<?php echo $pelaku['gambar'] ?>" style="width: 90%;">
+                            </center>
+                            
+                        </div>
+                        <div class="col-md-4">
+                            <center>
+                                <p>Foto Korban</p>
+                                <img src="asset/img/korban/<?php echo $korban['gambar'] ?>" style="width: 90%;">
+                            </center>
+                        </div>
                     </div>
                 </div>
 

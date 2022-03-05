@@ -1,4 +1,4 @@
-<?php include "connect.php";?>
+<?php include "koneksi.php";?>
 
 
 
@@ -8,7 +8,7 @@
 
   document.formshout.pesan.value += textToAdd;
 
-  document.mysql_out.pesanmysql_();
+  document.mysqli_out.pesanmysqli_();
 
 }
 
@@ -18,7 +18,7 @@
 
 <?php
 
-$qshoutbox=mysql_num_rows(mysql_query("select * from pesan"));
+$qshoutbox=mysqli_num_rows(mysqli_query($konek, "select * from pesan"));
 
 if ($qshoutbox > 0){
 

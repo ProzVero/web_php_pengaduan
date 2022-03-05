@@ -6,11 +6,11 @@
 
     include('koneksi.php');
 
-    if(mysql_query($query))
+    if(mysqli_query($konek, $query))
 
         echo'<script type="text/javascript">
 
-                //alert("Berhasil Hapus");
+                alert("Berhasil Hapus");
 
                 window.location="tabel_aduan.php"
 

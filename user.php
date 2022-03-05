@@ -24,15 +24,19 @@
 
 </head>
 
-<body background="asset/img/sunset.jpg">
+<body style="background-image: url('asset/img/polri.jpg'); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
+
 
     <!-- Container -->
 
+    <div>
+
+        <?php include "navbar.php"; ?>
+
+    </div>
     <div class="container">
 
     <?php
-
-        session_start();
 
         if(!isset($_SESSION['username'])) {
 
@@ -44,25 +48,18 @@
 
             
 
-        $query = mysqli_query($konek,"SELECT * FROM pelapor WHERE username = '$username'");
+        $query = mysqli_query($konek, "SELECT * FROM pelapor WHERE username = '$username'");
 
         $hasil = mysqli_fetch_array($query);
 
     ?>
 
-        
 
-        <div class="col-md-12">
+    <div class="col-md-3">
 
-            <?php include "navbar.php"; ?>
+        <?php include "usermenu.php"; ?>
 
-        </div>
-
-        <div class="col-md-3">
-
-            <?php include "usermenu.php"; ?>
-
-        </div>
+    </div>
 
         
 
@@ -135,7 +132,14 @@
 
                     <td><p><b>No Handphone</b></p></td><td>: <?php echo $d['nohp']; ?></td>
 
-                </tr>        
+                </tr>     
+                <tr class="active">
+
+                    <td><p><b>Foto</b></p></td>
+                    <td>: <img src="asset/img/pelapor/<?php echo $d['gambar'] ?>" style="width: 75px; height: 75px">
+              </td>
+
+                </tr>      
 
             <?php 
 

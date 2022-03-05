@@ -24,11 +24,11 @@
 
 </head>
 
-<body background="asset/img/sunset.jpg">
+<body style="background-image: url('asset/img/polri.jpg'); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
 
     <!-- Container -->
 
-    <div class="container">
+    <div>
 
     <?php
 
@@ -52,11 +52,13 @@
 
 
 
-        <div class="col-md-12">
+        <div>
 
             <?php include "navbar.php"; ?>
 
         </div>
+
+        <div class="container">
 
         <div class="col-md-3">
 
@@ -82,7 +84,7 @@
 
 
 
-                    $query=mysqli_query($konek,"select * from pelapor where username='$username'");
+                    $query=mysqli_query($konek, "select * from pelapor where username='$username'");
 
                     while($d=mysqli_fetch_array($query))
 
@@ -149,7 +151,7 @@
 
                         <td>Uraian Pengaduan</td>
 
-                        <td><textarea class="ckeditor" name="isi"></textarea></td>
+                        <td><textarea rows="5" cols="70" name="isi"></textarea></td>
 
                     </tr>
 
@@ -239,6 +241,7 @@
                                 else 
 
                                 {
+                                    require_once("koneksi.php");
                                     if (move_uploaded_file($_FILES['gambar']['tmp_name'], $uploadfile)) {
                                         $query1="insert into aduan (np,kategori,tkp,isi,gambar) values ('$np','$kategori','$tkp','$isi','$filenamee')";
                                         $simp=mysqli_query($konek, $query1) or die ('Gagal Query');
@@ -296,6 +299,7 @@
         <script src="js/bootstrap.min.js"></script>     
 
     </div>  
+    </div>
 
     <!-- Container -->
 

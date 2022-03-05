@@ -37,7 +37,7 @@ class PDF extends FPDF
         $this->Cell(190,5,'SEKTOR WARA UTARA',0,1,'C');
         
         // Logo
-        $this->Image('asset/img/lambang_polri.png',88,25,35);
+        $this->Image('asset/img/lambang-polri.png',88,25,35);
     	$this->Ln(35);
         // Line break
         
@@ -175,8 +175,9 @@ $pdf->SetFont('Times','',9);
         $pdf->cell(10,7,' ',0,0,'L');
         $pdf->cell(7,7,' ',0,0,'L');
         $pdf->cell(43,7,'CIRI-CIRI',0,0,'L');
-		$pdf->SetFillColor(255,255,255);
-        $pdf->multicell(130,7,': '.$pelaku['ciri'],0,1,'L');
+        $pdf->SetFillColor(255,255,255);
+        $a = substr($pelaku['ciri'],3,-4);
+        $pdf->multicell(100,7,': '.$a,0,1,'L');
 
         $pdf->cell(10,7,' ',0,0,'L');
         $pdf->cell(7,7,'5.',0,0,'L');
@@ -202,7 +203,8 @@ $pdf->SetFont('Times','',9);
         $pdf->cell(7,7,' ',0,0,'L');
 		$pdf->SetFillColor(255,255,255);
         $pdf->cell(43,7,'CIRI-CIRI',0,0,'L');
-        $pdf->multicell(130,7,': '.$korban['ciri'],0,1,'L');
+        $b = substr($korban['ciri'],3,-4);
+        $pdf->multicell(100,7,': '.$b,0,1,'L');
 
 //===================================================================
 
@@ -226,7 +228,18 @@ $pdf->SetFont('Times','',9);
         
         $pdf->SetFont('Times','',12);
 		$pdf->SetFillColor(255,255,255);
-        $pdf->multicell(130,7,''.$aduan['isi'],0,2,'L');
+        $c = substr($aduan['isi'],3,-4);
+        $pdf->multicell(100,7,$c,0,'L',1);
+
+        
+        $pdf->cell(60,7,'ADUAN',0,0,'C');
+        $pdf->cell(60,7,'PELAKU',0,0,'C');
+        $pdf->cell(60,7,'KORBAN',0,1,'C');
+
+        
+        $pdf->Image('asset/img/aduan/'.$aduan['gambar'],25,260,30,30);
+        $pdf->Image('asset/img/pelaku/'.$pelaku['gambar'],85,260,30,30);
+        $pdf->Image('asset/img/korban/'.$korban['gambar'],145,260,30,30);
 
 
 /*foreach ($data_kartu_keluarga as $kartu_keluarga) {

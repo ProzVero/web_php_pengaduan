@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="icon" href="asset/img/favicon.png" type="image/x-icon" />
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="admin/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="admin/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
     <link href="admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
     <link href="admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
@@ -15,10 +14,13 @@
     <link href="admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
-<body background="asset/img/sunset.jpg">
+<body style="background-image: url('asset/img/polri.jpg'); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
+
  <br>
- <div class="container">
+ <div>
     <?php include"navbar.php"; ?>
+  </div>
+ <div class="container">
   <div class="panel panel-info col-md-9">
           <br>
       <div class="table-responsive">

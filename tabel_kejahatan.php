@@ -31,8 +31,8 @@
         else { $adminname = $_SESSION['adminname']; }
         require_once("koneksi.php");
             
-        $query = mysql_query("SELECT * FROM admin WHERE adminname = '$adminname'");
-        $hasil = mysql_fetch_array($query);
+        $query = mysqli_query($konek, "SELECT * FROM admin WHERE adminname = '$adminname'");
+        $hasil = mysqli_fetch_array($query);
     ?>
     <div id="wrapper">
         
@@ -107,8 +107,8 @@
                                     include "koneksi.php";
 
                                     $no=$_GET['no'];
-                                    $query=mysql_query("select * from kejahatan");
-                                    while($d=mysql_fetch_array($query))
+                                    $query=mysqli_query($konek, "select * from kejahatan");
+                                    while($d=mysqli_fetch_array($query))
                                         {
 
                                     ?>

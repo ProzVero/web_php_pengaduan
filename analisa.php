@@ -41,7 +41,7 @@
 
     //change the second to start counting down from
 
-    var countdownfrom=10
+    var countdownfrom=3
 
 
 

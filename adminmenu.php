@@ -3,10 +3,7 @@
     <ul class="nav" id="side-menu">
       <li class="sidebar-search"><p></p>
       <p align="center">
-        <img src="asset/img/l.gif" alt="" width="20%">
-        <img src="asset/img/l.gif" alt="" width="20%">
-        <img src="asset/img/l.gif" alt="" width="20%">
-        <img src="asset/img/l.gif" alt="" width="20%">
+        <img src="asset/img/logo_presisi.png" alt="" width="80%">
       </p>
       </li>
       <li><a href="admin.php"><i class="fa fa-home fa-fw"></i> Admin Page</a></li>

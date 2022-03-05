@@ -99,7 +99,7 @@
                 <td colspan="2" align="center">
                   <?php
                   error_reporting(0);
-                  require_once(koneksi.php);
+                  require_once("koneksi.php");
                   $judul=$_POST['judul'];
                   $ket=$_POST['ket'];
                   $simpan=$_POST['simpan'];

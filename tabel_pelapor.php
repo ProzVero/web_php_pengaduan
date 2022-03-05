@@ -90,8 +90,9 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr class="success">
-                                            <th>Nomor Pelapor</th>
+                                            <th>No Pelapor</th>
                                             <th>Nama Pelapor</th>
+                                            <th>NIK Pelapor</th>
                                             <th>Tempat Tanggal Lahir</th>
                                             <th>Jenis Kelamin</th>
                                             <th>Alamat</th>
@@ -99,6 +100,7 @@
                                             <th>Nomor Handphone</th>
                                             <th>Username</th>
                                             <th>Password</th>
+                                            <th>Foto</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -117,6 +119,7 @@
                                         <tr>
                                             <td><?php echo $d['np']; ?></td>
                                             <td><?php echo $d['nama']; ?></td>
+                                            <td><?php echo $d['nik']; ?></td>
                                             <td><?php echo $d['ttl']; ?></td>
                                             <td><?php echo $d['jk']; ?></td>
                                             <td><?php echo $d['alamat']; ?></td>
@@ -124,6 +127,7 @@
                                             <td><?php echo $d['nohp']; ?></td>
                                             <td><?php echo $d['username']; ?></td>
                                             <td><?php echo $d['password']; ?></td>
+                                            <td><img src="asset/img/pelapor/<?php echo $d['gambar'] ?>" style="width: 75px; height: 75px"></td>
                                             <td> 
                                                 <a Onclick="return confirm('Yakin Mau Hapus?...');"href="hapus_pelapor.php?np=<?php echo $d['np']; ?>">
                                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

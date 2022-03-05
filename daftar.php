@@ -40,13 +40,15 @@ error_reporting(0);
 
 </head>
 
-<body background="asset/img/sunset.jpg">
+<body style="background-image: url('asset/img/polri.jpg'); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
 
     <!-- Container -->
 
-	<div class="container">
+	<div>
 
         <?php include "navbar.php"; ?>
+  </div>
+  <div  class="container">
 
         <div class="panel panel-info col-md-9">
 
@@ -54,7 +56,7 @@ error_reporting(0);
 
         	<div class="table-responsive">
 
-        		<form action="" method="post">
+        		<form action="" method="post" enctype="multipart/form-data">
 
         		<table class="table table-hover table-bordered">
 
@@ -75,7 +77,7 @@ error_reporting(0);
         			<tr>
 
         				<td>Password</td>
-        				<td><input class="fomysql_trol" type="password" name="password" value="" placeholder="Password..." maxlength="30" size="70px"></td>
+        				<td><input class="fomysqli_trol" type="password" name="password" value="" placeholder="Password..." maxlength="30" size="70px"></td>
 
         			</tr>
 
@@ -84,6 +86,14 @@ error_reporting(0);
         				<td>Nama</td>
 
         				<td><input class="form-control" type="text" name="nama" value="" placeholder="Tuliskan Nama Anda..." maxlength="30" size="70px"></td>
+
+        			</tr>
+
+              <tr>
+
+        				<td>NIK</td>
+
+        				<td><input class="form-control" type="number" name="nik" value="" placeholder="Tuliskan NIK Anda (16 Digit)" maxlength="16" minlength="16" size="70px"></td>
 
         			</tr>
 
@@ -127,11 +137,16 @@ error_reporting(0);
 
         			<tr>
 
-        				<td>Nomysql_d>
+        				<td>Nomer Hp</td>
 
-        				<td><input class="form-control" type="text" name="nohp" value="" placeholder="Tuliskan Nomer Hp Anda..." size="70px"></td>
+        				<td><input class="form-control" type="number" name="nohp" value="" placeholder="Tuliskan Nomer Hp Anda (12 Digit)" minlength="12" maxlength="12" size="70px"></td>
 
         			</tr>
+
+              <tr>
+                <td>Foto</td>
+                <td><input type="file" class="form-control" name="gambar" required></td>
+              </tr>
 
         			<tr>
 
@@ -151,16 +166,13 @@ error_reporting(0);
 
                   <?php
 
-                 $db=mysql_connect("sql304.epizy.com","epiz_30566725","xSmpWtgLff");
-                 mysql_sql_select_db("epiz_30566725_pengaduan",$db) or die ('Gagal Koneksi');
-
-
-
                   $username=$_POST['username'];
 
                   $password=$_POST['password'];
 
                   $nama=$_POST['nama'];
+
+                  $nik=$_POST['nik'];
 
                   $ttl=$_POST['ttl'];
 
@@ -181,6 +193,11 @@ error_reporting(0);
                   if (isset($simpan))
 
                   {
+                    $dir_gambar = 'asset/img/pelapor/';
+                    $filename = basename($_FILES['gambar']['name']);
+                    $type = basename($_FILES['gambar']['type']);
+                    $filenamee = date("YmdHis").'-'.$username.'.'.$type;
+                    $uploadfile = $dir_gambar . $filenamee;
 
 
 
@@ -205,6 +222,22 @@ error_reporting(0);
                   {
 
                   echo "Nama belum diisi !!!...";
+
+                  }
+
+                  else if ($nik=='')
+
+                  {
+
+                  echo "nik belum diisi !!!...";
+
+                  }
+
+                  else if (strlen($nik)!=16)
+
+                  {
+
+                  echo "nik tidak berjumlah 16 digit";
 
                   }
 
@@ -247,21 +280,38 @@ error_reporting(0);
                   echo "Nomor handphone belum diisi !!!...";
 
                   }
+                  
+                  else if (strlen($nohp)!=12)
+
+                  {
+
+                  echo "Nomor handphone tidak berjumlah 12 digit";
+
+                  }
+
+                  else if ($filename == '')
+
+                  {
+
+                      echo "Foto belum dipilih !!!...";
+
+                  }
 
                   else 
 
                   {
+                  require_once("koneksi.php");
 
-                  $query1="insert into pelapor (username,password,nama,ttl,jk,alamat,pekerjaan,nohp) 
+                  if (move_uploaded_file($_FILES['gambar']['tmp_name'], $uploadfile)) {
+                      $query1="insert into pelapor (username,password,nama,nik,ttl,jk,alamat,pekerjaan,nohp,gambar)
+                      values ('$username','$password','$nama','$nik','$ttl','$jk','$alamat','$pekerjaan','$nohp','$filenamee')";
+                      mysqli_query($konek, $query1) or die ('Gagal Query');
 
-                  values ('$username','$password','$nama','$ttl','$jk','$alamat','$pekerjaan','$nohp')";
-
-                  mysql_query($query1,$db) or die ('Gagal Query');
-
-
-
-                  echo "Terima kasih.. anda telah terdaftar...";
-
+                      echo "Terima kasih.. anda telah terdaftar...";
+  
+                  }else {
+                      echo '<script>window.alert("Foto Gagal Tersimpan")</script>';
+                  }
                   }
 
                   }
@@ -306,9 +356,9 @@ error_reporting(0);
 
                   include "koneksi.php";
 
-                  $query = mysql_query("SELECT * FROM pelapor");
+                  $query = mysqli_query($konek, "SELECT * FROM pelapor");
 
-                  $jumlah = mysql_num_rows($query);
+                  $jumlah = mysqli_num_rows($query);
 
 
 

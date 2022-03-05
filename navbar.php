@@ -27,8 +27,12 @@
           <?php endif; ?>
   
         <li><a href="home.php"><span class="glyphicon glyphicon-th"></span> Himbauan</a></li>
-        <li><a href="p_list.php"><span class="glyphicon glyphicon-th"></span> Informasi Kejahatan</a></li>
-     <!--    <li class="dropdown">
+        <?php 
+        if(isset($_SESSION['username'])): ?>
+          
+          <li><a href="p_list.php"><span class="glyphicon glyphicon-th"></span> Informasi Kejahatan</a></li>
+     
+        <?php endif; ?><!--    <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informasi<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="list.php">Info Kejahatan Via Dekstop</a></li>

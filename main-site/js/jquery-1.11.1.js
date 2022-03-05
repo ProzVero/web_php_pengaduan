@@ -9759,7 +9759,7 @@ jQuery.ajaxTransport( "script", function(s) {
 	if ( s.crossDomain ) {
 
 		var script,
-			head = document.head || jQuery("head")[0] || document.documentElement;
+			head = document.head || jquery($konek, "head")[0] || document.documentElement;
 
 		return {
 
@@ -9980,7 +9980,7 @@ jQuery.fn.load = function( url, params, callback ) {
 
 				// If a selector was specified, locate the right elements in a dummy div
 				// Exclude scripts to avoid IE 'Permission Denied' errors
-				jQuery("<div>").append( jQuery.parseHTML( responseText ) ).find( selector ) :
+				jquery($konek, "<div>").append( jQuery.parseHTML( responseText ) ).find( selector ) :
 
 				// Otherwise use the full result
 				responseText );

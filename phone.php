@@ -69,8 +69,8 @@
                 <td colspan="2" align="center">
                   <?php
                   error_reporting(0);
-                 $db=mysql_connect("sql304.epizy.com","epiz_30566725","xSmpWtgLff");
-                                mysql_select_db("epiz_30566725_pengaduan",$db) or die ('Gagal Koneksi');
+                 $db=mysqli_connect("sql304.epizy.com","epiz_30566725","xSmpWtgLff");
+                                mysqli_select_db("epiz_30566725_pengaduan",$db) or die ('Gagal Koneksi');
 
                   $nama=$_POST['nama'];
                   $alamat=$_POST['alamat'];
@@ -117,7 +117,7 @@
                   {
                   $query1="insert into p_aduan (nama,alamat,nohp,uraian,tkp,jmlpelaku,jmlkorban) 
                   values ('$nama','$alamat','$nohp','$uraian','$tkp','$jmlpelaku','$jmlkorban')";
-                  mysql_query($query1,$db) or die ('Gagal Query');
+                  mysqli_query($query1,$db) or die ('Gagal Query');
 
                   echo "Terima kasih.. data berhasil disimpan...";
                   }

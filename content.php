@@ -35,8 +35,8 @@
                 <div class="col-lg-12">
 
                     <div class="panel panel-default">
-mysql_
-                        <div class="panel-heamysql_
+mysqli_
+                        <div class="panel-heamysqli_
 
                           Informasi
 
@@ -72,9 +72,9 @@ mysql_
 
                                     $no=$_GET['no'];
 
-                                    $query=mysql_query("select * from himbauan");
+                                    $query=mysqli_query($konek, "select * from himbauan");
 
-                                    while($d=mysql_fetch_array($query))
+                                    while($d=mysqli_fetch_array($query))
 
                                         {
 
