@@ -57,6 +57,8 @@
    				} else {
 
     				 $_SESSION['username'] = $hasil['username'];
+					 
+    				 $_SESSION['np'] = $hasil['np'];
 
      				header('location:user.php');
 

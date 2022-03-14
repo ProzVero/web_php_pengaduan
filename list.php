@@ -16,7 +16,7 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/navbar.css" rel="stylesheet">
+    <!--link href="css/navbar.css" rel="stylesheet"-->
 
 </head>
 

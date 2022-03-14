@@ -16,7 +16,7 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/navbar.css" rel="stylesheet">
+    <!--link href="css/navbar.css" rel="stylesheet"-->
 
     <link href="asset/indexs.css" rel="stylesheet">
 
@@ -39,11 +39,12 @@
         error_reporting(0);
 
         $kode=$_GET['kode'];
+        $np = $_SESSION['np'];
 
         // $query=mysqli_query($konek, "SELECT * FROM aduan");
 
-          $query=mysqli_query($konek, "SELECT pelapor.*, aduan.* FROM pelapor, aduan WHERE pelapor.np=aduan.np;");
-
+          $query=mysqli_query($konek, "SELECT pelapor.*, aduan.* FROM pelapor, aduan WHERE pelapor.np = '$np' && aduan.np = '$np' ;");
+        $no = 1;
         while($row=mysqli_fetch_array($query))
 
         {
@@ -53,7 +54,7 @@
           <div class="panel panel-warning col-md-12">
             
             <div class="col-md-12">
-              <p class="text-danger"><b>No : <?php echo $row['kode']; ?></b><br></p><hr>
+              <p class="text-danger"><b>No : <?php echo $no; ?></b><br></p><hr>
 
               <div class="col-md-9">  
 
@@ -88,7 +89,7 @@
           <hr>                          
 
           <?php
-
+            $no ++;
             }
 
           ?>

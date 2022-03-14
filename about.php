@@ -16,14 +16,13 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/navbar.css" rel="stylesheet">
+    <!--link href="css/navbar.css" rel="stylesheet"-->
 
     <link href="asset/indexs.css" rel="stylesheet">
 
 </head>
 
 <body style="background-image: url('asset/img/polri.jpg'); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
-
   <div>
 
     <?php include "navbar.php"; ?>

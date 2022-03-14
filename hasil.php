@@ -16,8 +16,6 @@
 
 </head>
 <body style="background-image: url('asset/img/polri.jpg'); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
-
- <br>
   <div>
     <?php include"navbar.php"; ?>
   </div>
